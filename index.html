@@ -182,7 +182,8 @@
         .media-caption {
             position: absolute;
             bottom: -25px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 11px;
             color: #999;
             letter-spacing: 0.5px;
@@ -387,7 +388,7 @@
         <div class="modal-content">
             <button class="modal-close hoverable" id="close-modal">×</button>
             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%23f0f0f0'/%3E%3C/svg%3E" alt="Nikita Lipatov" class="about-photo">
-            <h2 class="about-title">✚ Nikita Lipatov</h2>
+            <h2 class="about-title">❚❚ Nikita Lipatov</h2>
             <div class="about-text">
                 Creator and visual artist based in Moscow, Russia. Specializing in architectural photography and minimalist visual narratives. My work explores the intersection of urban geometry and human perception, capturing the silent dialogue between concrete forms and empty spaces.
                 <br><br>
@@ -428,28 +429,115 @@
             element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-        // Media array with architectural images
+        // Media array with metadata for each image
         const mediaFiles = [
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934385/DSC01690_eusufp.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934576/DSC01691_vkhdm4.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934672/DSC01721_xc6zgw.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934693/DSC01724_ooiqiv.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935467/DSC01599_fpt6ww.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935467/DSC01616_kcsr7h.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935468/DSC01640_pdawaq.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935472/DSC01650_m8kf0d.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935531/DSC019192_usv0jh.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935478/postrave_icons_03_dwrlv8.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935486/postrave_icons_04_pbdg3w.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935483/postrave_icons_02_xivagj.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935479/postrave_icons_01_zhab8t.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935481/DSC01843_sfsxrz.jpg',
-            'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935947/Almaty25_02_jbg0kn.jpg',
-           'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935948/Almaty25_01_bsczyk.jpg'
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934385/DSC01690_eusufp.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'dec.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934576/DSC01691_vkhdm4.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'dec.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934672/DSC01721_xc6zgw.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'nov.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756934693/DSC01724_ooiqiv.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'nov.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935467/DSC01599_fpt6ww.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'oct.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935467/DSC01616_kcsr7h.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'oct.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935468/DSC01640_pdawaq.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'sep.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935472/DSC01650_m8kf0d.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'sep.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935531/DSC019192_usv0jh.jpg',
+                title: 'Unnamed Project',
+                type: 'photos',
+                date: 'aug.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935478/postrave_icons_03_dwrlv8.jpg',
+                title: 'Postrave Icons',
+                type: 'design',
+                date: 'jul.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935486/postrave_icons_04_pbdg3w.jpg',
+                title: 'Postrave Icons',
+                type: 'design',
+                date: 'jul.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935483/postrave_icons_02_xivagj.jpg',
+                title: 'Postrave Icons',
+                type: 'design',
+                date: 'jul.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935479/postrave_icons_01_zhab8t.jpg',
+                title: 'Postrave Icons',
+                type: 'design',
+                date: 'jul.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935481/DSC01843_sfsxrz.jpg',
+                title: 'Empty Spaces',
+                type: 'photos',
+                date: 'jun.2024'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935947/Almaty25_02_jbg0kn.jpg',
+                title: 'Almaty 2025',
+                type: 'photos',
+                date: 'aug.2025'
+            },
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1757017793/Almaty25_03_atoy0p.jpg',
+                title: 'Almaty 2025',
+                type: 'photos',
+                date: 'aug.2025'
+            },          
+            {
+                url: 'https://res.cloudinary.com/doq7zpbj8/image/upload/v1756935948/Almaty25_01_bsczyk.jpg',
+                title: 'Almaty 2025',
+                type: 'photos',
+                date: 'aug.2025'
+            }
         ];
 
-        // Current media index
-        let currentIndex = 0;
+        // Shuffled sequence management
+        let shuffledSequence = [];
+        let currentPosition = 0;
         let intervalId;
         let isPaused = false;
 
@@ -461,25 +549,52 @@
         const aboutModal = document.getElementById('about-modal');
         const closeModal = document.getElementById('close-modal');
 
+        // Shuffle function - Fisher-Yates algorithm
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Create new shuffled sequence
+        function createNewSequence() {
+            // Create array of indices [0, 1, 2, ..., X-1]
+            const indices = [];
+            for (let i = 0; i < mediaFiles.length; i++) {
+                indices.push(i);
+            }
+            // Shuffle and reset position
+            shuffledSequence = shuffleArray(indices);
+            currentPosition = 0;
+        }
+
         // Function to update media
         function updateMedia() {
-            currentIndex = Math.floor(Math.random() * mediaFiles.length);
+            // If we've shown all images, create new sequence
+            if (currentPosition >= shuffledSequence.length) {
+                createNewSequence();
+            }
+            
+            // Get current media based on shuffled sequence
+            const mediaIndex = shuffledSequence[currentPosition];
+            const currentMedia = mediaFiles[mediaIndex];
             
             // Add fade effect
             mediaElement.style.opacity = '0';
             
             setTimeout(() => {
-                mediaElement.src = mediaFiles[currentIndex];
+                mediaElement.src = currentMedia.url;
                 mediaElement.style.opacity = '1';
             }, 150);
             
-            // Update caption
-            const projectTypes = ['Unnamed project', 'Urban series', 'Architecture', 'Brutalism', 'Geometry'];
-            const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-            const randomProject = projectTypes[Math.floor(Math.random() * projectTypes.length)];
-            const randomMonth = months[Math.floor(Math.random() * months.length)];
+            // Update caption: position in current cycle / total count
+            caption.textContent = `${currentPosition + 1}/${mediaFiles.length} ||: ${currentMedia.title} | ${currentMedia.type} | ${currentMedia.date}`;
             
-            caption.textContent = `${currentIndex + 1}/${mediaFiles.length} ||: ${randomProject} | photos | ${randomMonth}.2024`;
+            // Move to next position
+            currentPosition++;
         }
 
         // Start autoplay
@@ -532,12 +647,13 @@
         });
 
         // Preload images for smoother transitions
-        mediaFiles.forEach(src => {
+        mediaFiles.forEach(media => {
             const img = new Image();
-            img.src = src;
+            img.src = media.url;
         });
 
         // Initialize
+        createNewSequence();
         updateMedia();
         startAutoplay();
     </script>
